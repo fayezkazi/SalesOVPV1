@@ -1,0 +1,168 @@
+{
+  "_version": "1.42.0",
+  "sap.app": {
+    "id": "fk.com.salesovpv1.salesovpv1",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:ovp",
+      "version": "1.14.2",
+      "toolsId": "25c38698-0431-456b-bdd9-024506df7038"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/ZSD_OVP_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "ZSD_OVP_ANNO_MDL",
+            "annotation"
+          ],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "ZSD_OVP_ANNO_MDL": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZSD_OVP_ANNO_MDL',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/ZSD_OVP_ANNO_MDL.xml"
+        }
+      },
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "salesovpv1-analyze": {
+          "semanticObject": "salesovpv1",
+          "action": "analyze",
+          "title": "{{flpTitle}}",
+          "subTitle": "{{flpSubtitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.102.2",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ushell": {},
+        "sap.f": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ovp": {},
+        "sap.ui.rta": {},
+        "sap.ui.layout": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "fk.com.salesovpv1.salesovpv1.i18n.i18n"
+        }
+      },
+      "mainModel": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "Inline",
+          "refreshAfterChange": false,
+          "metadataUrlParams": {
+            "sap-value-list": "none"
+          }
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [],
+      "targets": {}
+    }
+  },
+  "sap.ovp": {
+    "globalFilterModel": "mainModel",
+    "globalFilterEntityType": "C_SalesManagerSelectionResult",
+    "containerLayout": "resizable",
+    "enableLiveFilter": true,
+    "considerAnalyticalParameters": true,
+    "cards": {
+      "card00_IncomingSales": {
+        "template": "sap.ovp.cards.charts.analytical",
+        "model": "mainModel",
+        "settings": {
+          "entitySet": "C_SalesOrderByMonthResults",
+          "title": "{{incomingSales_title}}",
+          "subTitle": "{{incomingSales_subTitle}}",
+          "tabs": [
+            {
+              "selectionAnnotationPath":	"com.sap.vocabularies.UI.v1.SelectionVariant#IS",
+              "chartAnnotationPath":	"com.sap.vocabularies.UI.v1.Chart#ISA",
+              "presentationAnnotationPath":	"com.sap.vocabularies.UI.v1.PresentationVariant#IS",
+              "dataPointAnnotationPath":	"com.sap.vocabularies.UI.v1.DataPoint#ISA",
+              "identificationAnnotationPath":	"com.sap.vocabularies.UI.v1.Identification",
+              "value":	"{{incomingSales_value1}}"
+            },
+            {
+              "selectionAnnotationPath":	"com.sap.vocabularies.UI.v1.SelectionVariant#IS",
+              "chartAnnotationPath":	"com.sap.vocabularies.UI.v1.Chart#ISN",
+              "presentationAnnotationPath":	"com.sap.vocabularies.UI.v1.PresentationVariant#IS",
+              "dataPointAnnotationPath":	"com.sap.vocabularies.UI.v1.DataPoint#ISN",
+              "identificationAnnotationPath":	"com.sap.vocabularies.UI.v1.Identification",
+              "value":	"{{incomingSales_value2}}"
+            }
+          ]
+          }
+        }
+      }
+    }
+  }
+

@@ -1,0 +1,225 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common" />
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI" />
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/sap/ZSD_OVP_SRV/$metadata">
+        <edmx:Include Namespace="ZSD_OVP_SRV" Alias="SAP" />
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+            <!-- BEGIN OF SELECTION FILTER -->
+            <Annotations Target="ZSD_OVP_SRV.C_SalesManagerSelectionResult">
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>SoldToParty</PropertyPath>
+                        <PropertyPath>SalesOrganization</PropertyPath>
+                        <PropertyPath>DistributionChannel</PropertyPath>
+                        <PropertyPath>SalesOffice</PropertyPath>
+                        <PropertyPath>SalesGroup</PropertyPath>                        
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZSD_OVP_SRV.C_SalesManagerSelectionResult/to_SoldToParty">
+                <Annotation Term="UI.HiddenFilter" />
+            </Annotations>
+            <Annotations Target="ZSD_OVP_SRV.C_SalesManagerSelectionResult/to_SalesOrganization">
+                <Annotation Term="UI.HiddenFilter" />
+            </Annotations>
+            <Annotations Target="ZSD_OVP_SRV.C_SalesManagerSelectionResult/to_DistributionChannel">
+                <Annotation Term="UI.HiddenFilter" />
+            </Annotations>
+            <Annotations Target="ZSD_OVP_SRV.C_SalesManagerSelectionResult/to_SalesGroup">
+                <Annotation Term="UI.HiddenFilter" />
+            </Annotations>
+            <Annotations Target="ZSD_OVP_SRV.C_SalesManagerSelectionResult/to_SalesOffice">
+                <Annotation Term="UI.HiddenFilter" />
+            </Annotations>
+            <Annotations Target="ZSD_OVP_SRV.C_SalesManagerSelectionResult/to_OrganizationDivision">
+                <Annotation Term="UI.HiddenFilter" />
+            </Annotations>
+            <Annotations Target="ZSD_OVP_SRV.C_SalesManagerSelectionResult/SalesDocumentType">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Hidden" />
+                <Annotation Term="UI.Hidden" />
+            </Annotations>
+            <!-- END OF SELECTION FILTER -->
+            <!-- BEGIN OF ANALYTICAL CARD 1 - INCOMING SALES CHART -->
+            <Annotations Target="ZSD_OVP_SRV.C_SalesOrderByMonthResult">
+                <!-- BEGIN OF Navigation Semantics from CHART - INCOMING SALES CHART -->
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="SalesOrder" />
+                            <PropertyValue Property="Action" String="analyzeIncoming" />
+                            <PropertyValue Property="Label" String="IncomingSalesNav" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <!-- END OF Navigation Semantics from CHART - INCOMING SALES CHART -->
+                <!-- BEGIN OF CHART 1 with Dimension and Measure for First CHART -->
+                <Annotation Term="UI.Chart" Qualifier="ISA">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="Title" String="{@i18n>incomingSales_chartTitle1}" />
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="IncomingSalesOrdersNetAmtInDC" />
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1" />
+                                </Record>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="ComprnIncgSlsOrdersNetAmtInDC" />
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis2" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="YearMonth" />
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Actions" />
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/VerticalBullet" />
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>IncomingSalesOrdersNetAmtInDC</PropertyPath>
+                                <PropertyPath>ComprnIncgSlsOrdersNetAmtInDC</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>YearMonth</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <!-- END CHART 1 with Dimension and Measure for First CHART -->
+                <Annotation Term="UI.Chart" Qualifier="ISN">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="Title" String="{@i18n>incomingSales_chartTitle2}" />
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="NumberOfSalesOrders" />
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1" />
+                                </Record>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="ComparisonNumberOfSalesOrders" />
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis2" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="YearMonth" />
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Actions" />
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/VerticalBullet" />
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>NumberOfSalesOrders</PropertyPath>
+                                <PropertyPath>ComparisonNumberOfSalesOrders</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>YearMonth</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <!-- BEGIN SELECTION VARIANT for First CHART -->
+                <Annotation Term="UI.SelectionVariant" Qualifier="IS">
+                    <Record Type="UI.SelectionVariantType">
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="UI.Parameter">
+                                    <PropertyValue Property="PropertyName" PropertyPath="P_ExchangeRateType">
+                                        <PropertyPath>P_ExchangeRateType</PropertyPath>
+                                    </PropertyValue>
+                                    <PropertyValue Property="PropertyValue" String="M" />
+                                </Record>
+                                <Record Type="UI.Parameter">
+                                    <PropertyValue Property="PropertyName" PropertyPath="P_DisplayCurrency">
+                                        <PropertyPath>P_DisplayCurrency</PropertyPath>
+                                    </PropertyValue>
+                                    <PropertyValue Property="PropertyValue" String="EUR" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="SelectOptions" />
+                    </Record>
+                </Annotation>
+                <!-- END SELECTION VARIANT for First CHART -->
+
+                <!-- BEGIN PRESENTATION VARIANT for First CHART -->
+                <Annotation Term="UI.PresentationVariant" Qualifier="IS">
+                    <Record Type="UI.PresentationVariantType">
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="YearMonth" />
+                                    <PropertyValue Property="Descending" Bool="false" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <!-- END PRESENTATION VARIANT for First CHART -->
+                <!-- BEGIN DATA POINT FOR NET VALUE for First CHART -->
+                <Annotation Term="UI.DataPoint" Qualifier="ISA">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Value" Path="IncomingSalesOrdersNetAmtInDC" />
+                        <PropertyValue Property="ValueFormat">
+                            <Record Type="UI.NumberFormat">
+                                <PropertyValue Property="ScaleFactor" Decimal="1000" />
+                                <PropertyValue Property="NumberOfFractionalDigits" Int="1" />
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="CriticalityCalculation">
+                            <Record>
+                                <PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Maximize" />
+                                <PropertyValue Property="DeviationRangeLowValue" Path="ComprnIncgSlsOrdersNetAmtInDC" />
+                                <PropertyValue Property="ToleranceRangeLowValue" Path="ComprnIncgSlsOrdersNetAmtInDC" />
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="TrendCalculation">
+                            <Record>
+                                <PropertyValue Property="ReferenceValue" Path="ComprnIncgSlsOrdersNetAmtInDC" />
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <!-- END DATA POINT FOR NET VALUE for First CHART -->
+                <!-- BEGIN DATA POINT FOR Number of Orders for First CHART -->
+                <Annotation Term="UI.DataPoint" Qualifier="ISN">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Value" Path="NumberOfSalesOrders" />
+                        <PropertyValue Property="CriticalityCalculation">
+                            <Record>
+                                <PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Maximize" />
+                                <PropertyValue Property="DeviationRangeLowValue" Path="ComparisonNumberOfSalesOrders" />
+                                <PropertyValue Property="ToleranceRangeLowValue" Path="ComparisonNumberOfSalesOrders" />
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="TrendCalculation">
+                            <Record>
+                                <PropertyValue Property="ReferenceValue" Path="ComparisonNumberOfSalesOrders" />
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <!-- END DATA POINT FOR Number of Orders for First CHART -->
+            </Annotations>
+            <!-- END OF ANALYTICAL CARD 1 - INCOMING SALES CHART -->
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
