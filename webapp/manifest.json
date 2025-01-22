@@ -144,25 +144,40 @@
           "subTitle": "{{incomingSales_subTitle}}",
           "tabs": [
             {
-              "selectionAnnotationPath":	"com.sap.vocabularies.UI.v1.SelectionVariant#IS",
-              "chartAnnotationPath":	"com.sap.vocabularies.UI.v1.Chart#ISA",
-              "presentationAnnotationPath":	"com.sap.vocabularies.UI.v1.PresentationVariant#IS",
-              "dataPointAnnotationPath":	"com.sap.vocabularies.UI.v1.DataPoint#ISA",
-              "identificationAnnotationPath":	"com.sap.vocabularies.UI.v1.Identification",
-              "value":	"{{incomingSales_value1}}"
+              "selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#IS",
+              "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ISA",
+              "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#IS",
+              "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#ISA",
+              "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
+              "value": "{{incomingSales_value1}}"
             },
             {
-              "selectionAnnotationPath":	"com.sap.vocabularies.UI.v1.SelectionVariant#IS",
-              "chartAnnotationPath":	"com.sap.vocabularies.UI.v1.Chart#ISN",
-              "presentationAnnotationPath":	"com.sap.vocabularies.UI.v1.PresentationVariant#IS",
-              "dataPointAnnotationPath":	"com.sap.vocabularies.UI.v1.DataPoint#ISN",
-              "identificationAnnotationPath":	"com.sap.vocabularies.UI.v1.Identification",
-              "value":	"{{incomingSales_value2}}"
+              "selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#IS",
+              "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ISN",
+              "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#IS",
+              "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#ISN",
+              "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
+              "value": "{{incomingSales_value2}}"
             }
           ]
-          }
+        }
+      },
+      "card01": {
+        "template": "sap.ovp.cards.charts.analytical",
+        "model": "mainModel",
+        "settings": {
+          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#IncompleteSalesDocByCat",
+          "entitySet": "C_IncompleteSalesDocByCat",
+          "title": "Incomplete Sales Document By Category",
+          "subTitle": "Number of Documents",
+          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#IncompleteSalesDocByCatType",
+          "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#IncompleteSalesDocByCatType",
+          "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#IncompleteSalesDocByCatType",
+          "selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#IncompleteSalesDocByCatType"
         }
       }
-    }
+    },
+    "chartSettings": {}
   }
+}
 

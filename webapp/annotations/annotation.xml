@@ -18,7 +18,7 @@
                         <PropertyPath>SalesOrganization</PropertyPath>
                         <PropertyPath>DistributionChannel</PropertyPath>
                         <PropertyPath>SalesOffice</PropertyPath>
-                        <PropertyPath>SalesGroup</PropertyPath>                        
+                        <PropertyPath>SalesGroup</PropertyPath>
                     </Collection>
                 </Annotation>
             </Annotations>
@@ -220,6 +220,110 @@
                 <!-- END DATA POINT FOR Number of Orders for First CHART -->
             </Annotations>
             <!-- END OF ANALYTICAL CARD 1 - INCOMING SALES CHART -->
+            <!-- BEGIN OF ANALYTICAL CARD 2 - INCOMPLETE SALES CHART -->
+            <Annotations Target="SAP.C_IncompleteSalesDocByCatType">
+                <Annotation Term="UI.Chart" Qualifier="IncompleteSalesDocByCat">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Donut" />
+                        <PropertyValue Property="Title" String="Incomplete Sales Document By Category" />
+                        <PropertyValue Property="Description" String="Number of Documents" />
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>SDDocumentCategory</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="SDDocumentCategory" />
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>NumberOfIncompleteSlsDocuments</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="NumberOfIncompleteSlsDocuments" />
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant" Qualifier="IncompleteSalesDocByCatType">
+                    <Record>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.Chart#IncompleteSalesDocByCat</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="NumberOfIncompleteSlsDocuments" />
+                                    <PropertyValue Property="Descending" Bool="true" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="IncompleteSalesDocByCatType">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Value" Path="NumberOfIncompleteSlsDocuments" />
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Identification" Qualifier="IncompleteSalesDocByCatType">
+                    <Collection>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="SalesDocument" />
+                            <PropertyValue Property="Action" String="listIncompleteDocuments" />
+                            <PropertyValue Property="Label" String="IncompletedocNav" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <!-- BEGIN OF ANALYTICAL CARD 2 - SELECTION INCOMPLETE SALES CHART -->
+                <Annotation Term="UI.SelectionVariant" Qualifier="IncompleteSalesDocByCatType">
+                    <Record>
+                        <PropertyValue Property="SelectOptions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="PropertyName" PropertyPath="OverallSDProcessStatus" />
+                                    <PropertyValue Property="Ranges">
+                                        <Collection>
+                                            <Record>
+                                                <PropertyValue Property="Sign" EnumMember="com.sap.vocabularies.UI.v1.SelectionRangeSignType/I" />
+                                                <PropertyValue Property="Option" EnumMember="com.sap.vocabularies.UI.v1.SelectionRangeOptionType/EQ" />
+                                                <PropertyValue Property="Low" String="B" />
+                                                <PropertyValue Property="High" String="" />
+                                            </Record>
+                                            <Record>
+                                                <PropertyValue Property="Sign" EnumMember="com.sap.vocabularies.UI.v1.SelectionRangeSignType/I" />
+                                                <PropertyValue Property="Option" EnumMember="com.sap.vocabularies.UI.v1.SelectionRangeOptionType/EQ" />
+                                                <PropertyValue Property="Low" String="A" />
+                                                <PropertyValue Property="High" String="" />
+                                            </Record>
+                                            <Record>
+                                                <PropertyValue Property="Sign" EnumMember="com.sap.vocabularies.UI.v1.SelectionRangeSignType/I" />
+                                                <PropertyValue Property="Option" EnumMember="com.sap.vocabularies.UI.v1.SelectionRangeOptionType/EQ" />
+                                                <PropertyValue Property="Low" String="" />
+                                                <PropertyValue Property="High" String="" />
+                                            </Record>
+                                        </Collection>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+
+                <!-- END OF ANALYTICAL CARD 2 - SELECTION INCOMPLETE SALES CHART -->
+            </Annotations>
+            <!-- END OF ANALYTICAL CARD 2 - INCOMPLETE SALES CHART -->
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>
