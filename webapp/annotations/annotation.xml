@@ -324,6 +324,70 @@
                 <!-- END OF ANALYTICAL CARD 2 - SELECTION INCOMPLETE SALES CHART -->
             </Annotations>
             <!-- END OF ANALYTICAL CARD 2 - INCOMPLETE SALES CHART -->
+            
+            <!-- BEGIN OF ANALYTICAL CARD 3 - LIST CARD BLOCKED SALES CHART -->
+            <Annotations Target="SAP.C_BlockedSalesOrderResult">
+                <Annotation Term="UI.DataPoint" Qualifier="BlockedSalesOrderAmount">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Value" Path="TotalNetAmountInDisplayCrcy"/>
+                        <PropertyValue Property="ValueFormat">
+                            <Record Type="UI.NumberFormat">
+                                <PropertyValue Property="ScaleFactor" Decimal="1000"/>
+                                <PropertyValue Property="NumberOfFractionalDigits" Int="1"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="BlockedSalesOrderNumber">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Value" Path="NumberOfSalesOrders"/>
+                    </Record>
+                </Annotation>
+                
+                <Annotation Term="UI.LineItem" Qualifier="BlockedSalesOrder">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="IssueName"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAnnotation">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#BlockedSalesOrderAmount"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAnnotation">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#BlockedSalesOrderNumber"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Issue"/>
+                        </Record>                        
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionVariant" Qualifier="BlockedSalesOrder">
+                    <Record>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="UI.Parameter">
+                                    <PropertyValue Property="PropertyName" PropertyPath="P_ExchangeRateType"/>
+                                    <PropertyValue Property="PropertyValue" String="M"/>
+                                </Record>
+                                <Record Type="UI.Parameter">
+                                    <PropertyValue Property="PropertyName" PropertyPath="P_DisplayCurrency"/>
+                                    <PropertyValue Property="PropertyValue" String="EUR"/>
+                                </Record>                                
+                            </Collection>
+                        </PropertyValue>                        
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="SalesOrderFulfillmentIssue"/>
+                            <PropertyValue Property="Action" String="analyzeALPDetails"/>
+                            <PropertyValue Property="Label" String="BlockedOrdersNav"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+
+            <!-- END OF ANALYTICAL CARD 3 - LIST CARD BLOCKED SALES CHART -->
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>

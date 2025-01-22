@@ -175,6 +175,21 @@
           "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#IncompleteSalesDocByCatType",
           "selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#IncompleteSalesDocByCatType"
         }
+      },
+      "card02": {
+        "template": "sap.ovp.cards.list",
+        "model": "mainModel",
+        "settings": {
+          "listFlavor": "bar",
+          "listType": "condensed",
+          "entitySet": "C_BlockedSalesOrderResults",
+          "title": "Blocked Sales Order",
+          "annotationPath": "com.sap.vocabularies.UI.v1.LineItem#BlockedSalesOrder",
+          "selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#BlockedSalesOrder",
+          "sortBy": "TotalNetAmountInDisplayCrcy",
+          "sortOrder": "descending",
+          "addODataSelect": true
+        }
       }
     },
     "chartSettings": {}
