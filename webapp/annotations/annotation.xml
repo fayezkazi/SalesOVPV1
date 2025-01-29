@@ -388,6 +388,91 @@
             </Annotations>
 
             <!-- END OF ANALYTICAL CARD 3 - LIST CARD BLOCKED SALES CHART -->
+            <!-- BEGIN OF TABLE CARD 4 -  -->
+            <Annotations Target="SAP.C_OverdueSalesOrderResult">
+                <Annotation Term="UI.DataPoint" Qualifier="OverdueNumberOfSalesOrders">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Value" Path="NumberOfSalesOrders"/>
+                    </Record>
+                </Annotation>
+                
+                <Annotation Term="UI.DataPoint" Qualifier="OverdueTotalNetAmountInDisplayCrcy">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Value" Path="TotalNetAmountInDisplayCrcy"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.LineItem" Qualifier="OverdueBySoldTo">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="SoldToParty"/>
+                            <PropertyValue Property="Label" String="Customer"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAnnotation">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#OverdueNumberOfSalesOrders"/>
+                            <PropertyValue Property="Label" String="Overdue No. of Orders"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAnnotation">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#OverdueTotalNetAmountInDisplayCrcy"/>
+                            <PropertyValue Property="Label" String="Overdue Amount"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem" Qualifier="OverdueBySalesOrg">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="SalesOrganization"/>
+                            <PropertyValue Property="Label" String="Sales Org"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAnnotation">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#OverdueNumberOfSalesOrders"/>
+                            <PropertyValue Property="Label" String="No. of Orders"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAnnotation">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#OverdueTotalNetAmountInDisplayCrcy"/>
+                            <PropertyValue Property="Label" String="Amount"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionVariant" Qualifier="OverdueSalesOrders">
+                    <Record>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="UI.Parameter">
+                                    <PropertyValue Property="PropertyName" PropertyPath="P_ExchangeRateType"/>
+                                    <PropertyValue Property="PropertyValue" String="M"/>
+                                </Record>
+                                <Record Type="UI.Parameter">
+                                    <PropertyValue Property="PropertyName" PropertyPath="P_DisplayCurrency"/>
+                                    <PropertyValue Property="PropertyValue" String="EUR"/>
+                                </Record>                                
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Identification" Qualifier="OverdueBySoldTo">
+                    <Collection>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="Customer"/>
+                            <PropertyValue Property="Action" String="displayFactSheet"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Identification" Qualifier="OverdueBySalesOrg">
+                    <Collection>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="SalesOrder"/>
+                            <PropertyValue Property="Action" String="trackStatus"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <!-- END OF TABLE CARD 4 -  -->
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>

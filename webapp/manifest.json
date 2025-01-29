@@ -190,6 +190,31 @@
           "sortOrder": "descending",
           "addODataSelect": true
         }
+      },
+      "card04": {
+        "template": "sap.ovp.cards.table",
+        "model": "mainModel",
+        "settings": {
+          "entitySet": "C_OverdueSalesOrderResults",
+          "title": "Overdue Orders",
+          "tabs": [
+            {
+              "annotationPath": "com.sap.vocabularies.UI.v1.LineItem#OverdueBySoldTo",
+              "selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#OverdueSalesOrders",
+              "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#OverdueBySoldTo",
+              "value": "By Customer"
+            },
+            {
+              "annotationPath": "com.sap.vocabularies.UI.v1.LineItem#OverdueBySalesOrg",
+              "selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#OverdueSalesOrders",
+              "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#OverdueBySalesOrg",
+              "value": "By Sales Org"
+            }
+          ],
+          "sortBy": "TotalNetAmountInDisplayCrcy",
+          "sortOrder": "descending",
+          "addODataSelect": true
+        }
       }
     },
     "chartSettings": {}
