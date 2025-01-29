@@ -473,6 +473,105 @@
                 </Annotation>
             </Annotations>
             <!-- END OF TABLE CARD 4 -  -->
+            <!-- BEGIN OF CHART CARD 5 - ANALYTICAL CARD  -->
+            <Annotations Target="SAP.C_CustReturnItemByMonthResult">
+                <Annotation Term="UI.Chart" Qualifier="CustReturnItemByMonth">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Combination"/>
+                        <PropertyValue Property="Actions"/>
+                        <PropertyValue Property="Title" String="Customer Return Comparision"/>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>YearMonth</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="YearMonth"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>IncomingCustReturnsNetAmtInDC</PropertyPath>
+                                <PropertyPath>ComprnIncgCustReturnNetAmtInDC</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="ComprnIncgCustReturnNetAmtInDC"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="IncomingCustReturnsNetAmtInDC"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis2"/>
+                                </Record>                                
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant" Qualifier="CustReturnItemByMonth">
+                    <Record>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.Chart#CustReturnItemByMonth</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="YearMonth"/>
+                                    <PropertyValue Property="Descending" Bool="false"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="CustReturnItemByMonth">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Value" Path="IncomingCustReturnsNetAmtInDC"/>
+                            <PropertyValue Property="ValueFormat">
+                            <Record Type="UI.NumberFormat">
+                            <PropertyValue Property="NumberOfFractionalDigits" Int="1"/>
+                            </Record>
+                        </PropertyValue>                        
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Identification" Qualifier="CustReturnItemByMonth">
+                    <Collection>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="SalesOrder"/>
+                            <PropertyValue Property="Action" String="trackStatus"/>
+                            <PropertyValue Property="Label" String="CustReturnNav"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionVariant" Qualifier="CustReturnItemByMonth">
+                    <Record>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="UI.Parameter">
+                                    <PropertyValue Property="PropertyName" PropertyPath="P_ExchangeRateType">
+                                    <PropertyPath>P_ExchangeRateType</PropertyPath>
+                                    </PropertyValue>
+                                    <PropertyValue Property="PropertyValue" String="M"/>
+                                </Record>
+                                <Record Type="UI.Parameter">
+                                    <PropertyValue Property="PropertyName" PropertyPath="P_DisplayCurrency">
+                                    <PropertyPath>P_DisplayCurrency</PropertyPath>
+                                    </PropertyValue>
+                                    <PropertyValue Property="PropertyValue" String="EUR"/>
+                                    <PropertyValue Property="SelectOptions"/>
+                                </Record>                                
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>              
+            </Annotations>
+            <!-- END OF CHART CARD 5 - ANALYTICAL CARD  -->
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>

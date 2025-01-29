@@ -215,9 +215,24 @@
           "sortOrder": "descending",
           "addODataSelect": true
         }
+      },
+      "card05": {
+        "template": "sap.ovp.cards.charts.analytical",
+        "model": "mainModel",
+        "settings": {
+          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#CustReturnItemByMonth",
+          "entitySet": "C_CustReturnItemByMonthResults",
+          "title": "Customer Return",
+          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#CustReturnItemByMonth",
+          "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#CustReturnItemByMonth",
+          "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#CustReturnItemByMonth",
+          "selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#CustReturnItemByMonth"
+        }
       }
     },
-    "chartSettings": {}
+    "chartSettings": {
+      "showDataLabel": true
+    },
+    "refreshIntervalInMinutes": 5
   }
 }
-
